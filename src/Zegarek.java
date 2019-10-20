@@ -24,7 +24,7 @@ public class Zegarek {
     void czasPrzerwy () throws InterruptedException {
         int czas = przerwa * 60;
         for (int i = czas; czas > 0; czas--) {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(1); //FIXME Mozliwosc przerwania pracy by sie przydałą
             System.out.println(czas/60 + ":"+ czas%60); //TODO dostosowanie wyswietlania do aplikacji
 
         }
