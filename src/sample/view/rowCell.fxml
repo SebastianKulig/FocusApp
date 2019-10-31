@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rowCellAnchorPane" prefHeight="100.0" prefWidth="729.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="rowCellImageView" fitHeight="54.0" fitWidth="57.0" layoutX="38.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icon_update.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="rowCellTaskLabel" layoutX="117.0" layoutY="6.0" prefHeight="27.0" prefWidth="278.0" text="Task" textFill="#f5f5f5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="rowCellDescriptionLabel" layoutX="119.0" layoutY="41.0" prefHeight="54.0" prefWidth="634.0" style="-fx-background-color: #E74C3C;" text="Description" textFill="#fafafa" />
+      <ImageView fx:id="rowCellDoneButton" fitHeight="34.0" fitWidth="41.0" layoutX="719.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@../assets/icons8-ok-48.png" />
+         </image></ImageView>
+   </children>
+</AnchorPane>
