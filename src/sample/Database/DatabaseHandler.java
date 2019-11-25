@@ -29,12 +29,9 @@ public class DatabaseHandler extends Conf {
             e.printStackTrace();
         }
     }
-
-
-
-
     // adding new user to our database
-    public void createUser (User user1){
+    public boolean createUser (User user1){
+        boolean ifcreated = false;
         if(checkUserNameAvailability(user1)) {
             String creator = "INSERT INTO " + "users" + "(" + "first_name" + "," + "last_name" + "," + "username" + "," + "password" + ")" + "VALUES(?,?,?,?)";
             try {
@@ -43,16 +40,19 @@ public class DatabaseHandler extends Conf {
                 prep.setString(2, user1.getLastName());
                 prep.setString(3, user1.getUserName());
                 prep.setString(4, user1.getPassword());
-
                 prep.executeUpdate();
+                ifcreated = true;
             } catch (java.sql.SQLException e) {
                 e.printStackTrace(); //metod exception wyrzucająca co i gdzie się wywaliło
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }else{
+
             System.out.println("this user name is already taken");
+            ifcreated = false;
         }
+        return ifcreated;
     }
 
     public ResultSet returnUserFromDB(User user1){
@@ -78,7 +78,6 @@ public class DatabaseHandler extends Conf {
         }
         return result;
     }
-
 
     public void addTask(Task task){
         String creator = "INSERT INTO" +  " tasks " + " (" + " id_user "+  "," + " task " +"," + " description " + ")" + "VALUES(?,?,?)";

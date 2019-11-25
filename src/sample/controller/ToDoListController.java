@@ -67,14 +67,8 @@ public class ToDoListController {
             //System.out.println("user tasks: " + resultSet.getString("task"));
         }
 
-
-
-
-
-
         toDoListListView.setItems(tasks);
         toDoListListView.setCellFactory(RowCellController ->new RowCellController()); //do naszej customowej zamiast defaultowej
-
 
 
         menuHomeButton.setOnMouseClicked(event -> {
@@ -82,15 +76,10 @@ public class ToDoListController {
         });
 
         addButton.setOnAction(event -> {
-            System.out.println("w todoliście" + userId);
-
-
             addButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/addForm.fxml"));
-
             try {
-
                 loader.load();
             }catch (IOException e){
                 e.printStackTrace();
@@ -98,18 +87,12 @@ public class ToDoListController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-
             AddFormController addFormController = loader.getController();
             addFormController.setUserId(userId); //nie ruszać kolejności, najpierw trzeba ustawić id w addForm
             stage.showAndWait();
-
-
             //AddFormController addFormController = loader.getController();
             //addFormController.setUserId(userId);
-
-
             //AddFormController.userId = getUserId();
-            System.out.println(userId);
             //addButton.relocate(0,20);
             //addButton.setOpacity(0);
             /*
@@ -135,19 +118,13 @@ public class ToDoListController {
 
     }
 
-
-
     public void setUserId(int userId){
-        System.out.println(userId);
         this.userId = userId;
         System.out.println("id " + this.userId);
-
     }
     public int getUserId(){
         return this.userId;
     }
-
-
 
     public void goToMenu(){
         try {
@@ -155,21 +132,12 @@ public class ToDoListController {
             ToDoListController.userId = getUserId();
             MenuController.userId = getUserId();
             System.out.println("from toDoList" + userId);
-
-
             AnchorPane MenuPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
-
-
             toDoListAnchorPane.getChildren().setAll(MenuPane);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
 
 

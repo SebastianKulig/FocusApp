@@ -42,7 +42,6 @@ public class RowCellController extends JFXListCell<Task> {
     @Override
     protected void updateItem(Task task, boolean empty) {
         super.updateItem(task, empty);
-
         if(empty || task == null){
             setText(null);
             setGraphic(null);
@@ -50,28 +49,22 @@ public class RowCellController extends JFXListCell<Task> {
             if(fxmlLoader == null){
                 fxmlLoader = new FXMLLoader(getClass().getResource("/sample/view/rowCell.fxml"));
                 fxmlLoader.setController(this); //this class is controller to rowCell
-
                 try {
                     fxmlLoader.load();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-
             rowCellTaskLabel.setText(task.getTask_name());
             rowCellDescriptionLabel.setText(task.getDescription());
             int taskId = task.getTaskId();
-
             rowCellDoneButton.setOnMouseClicked(event -> {
                 databaseHandler = new DatabaseHandler();                             //delete from database
                 databaseHandler.deleteTask(ToDoListController.userId, taskId);
                 getListView().getItems().remove(getItem()); //remove clicked item (only from view)
             });
-
             setText(null);
             setGraphic(rowCellAnchorPane); //umieszczamy wszystko w naszym anchor pane
-
-
         }
     }
 }

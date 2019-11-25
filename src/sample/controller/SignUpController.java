@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -45,17 +46,18 @@ public class SignUpController {
     private Button signUpBackButton;
 
     @FXML
+    private Label wrongUsernameLabel;
+
+
+    @FXML
     void initialize() {
         signUpButton.setOnAction(event -> {
             //dbhandler.createUser(signUpFirstName.getText(), signUpLastName.getText(), signUpUsername.getText(), signUpPassword.getText());
             signUpUser();
         });
-
         signUpBackButton.setOnAction(event -> {
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/login.fxml"));
-
             try {
                 loader.load();
             } catch (IOException e) {
@@ -64,18 +66,17 @@ public class SignUpController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-
             stage.showAndWait();
-
         });
-
-
     }
         private void signUpUser () {
             DatabaseHandler dbhandler = new DatabaseHandler();
             User user1 = new User(signUpFirstName.getText(), signUpLastName.getText(), signUpUsername.getText(), signUpPassword.getText());
-            dbhandler.createUser(user1); //piekne :D konstruktorem se wpisuje wszystkie dane
-
+            wrongUsernameLabel.setVisible(!dbhandler.createUser(user1)); //piekne :D konstruktorem se wpisuje wszystkie dane
+            signUpFirstName.setText("");
+            signUpLastName.setText("");
+            signUpPassword.setText("");
+            signUpUsername.setText("");
 
             };
    /* private void goBackToLogin() {

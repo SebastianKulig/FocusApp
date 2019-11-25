@@ -44,25 +44,15 @@ public class AddFormController {
     @FXML
     void initialize() {
         DatabaseHandler dbhandler =new DatabaseHandler();
-
-
-
-
         addFormAddButton.setOnAction(event -> {
             Task task = new Task();
-
             String task_name =addFormTaskfield.getText().trim();
             String task_descryption = addFormDescrytpionField.getText().trim();
             if(!task_descryption.equals("") || !task.equals("")) {
-
-               // task.setUserId(ToDoListController.userId);
-                System.out.println("w dodawaniu zadań"+userId);
                 task.setUserId(getUserId());
                 task.setTask_name(task_name);
                 task.setDescription(task_descryption);
-
                 addFormSuccesfullyLabel.setVisible(true);
-
                 addFormTaskfield.setText("");
                 addFormDescrytpionField.setText("");
             }else{

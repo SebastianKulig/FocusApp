@@ -42,52 +42,33 @@ public class LoginController {
     private int userId;
     @FXML
     void initialize() {
-
         DatabaseHandler db = new DatabaseHandler();
-
-
-
         loginSignInButton.setOnAction(event -> {
            // if(!loginText.equals("") || !loginPassword.equals("")) {
                 // !loginText.equals("") || !loginPassword.equals("")
-
                 String loginText = loginUsernameField.getText().trim();
                 String loginPassword = loginPasswordField.getText().trim();
                 User user1 = new User();
                 user1.setUserName(loginText);
-
                 user1.setPassword(loginPassword);
                 ResultSet userFromDB = db.returnUserFromDB(user1);
-
                 int tmp =0;
                 try {
                     while (userFromDB.next()) {
-
-
                         tmp++;
                         String user_name = userFromDB.getString("first_name");
                         //System.out.println(user_name);
                         userId = userFromDB.getInt("id_user");
                         //System.out.println(userId);
                         goToMenu();
-
-
                     }
-
                     if (tmp == 1) {
                         System.out.println("we are in");
-
                     }
                 }catch (SQLException e){
                    e.printStackTrace();
                 }
-
-
-
         });
-
-
-
 
 
         loginSignUpButton.setOnAction(event -> {                   //lambda
@@ -120,23 +101,13 @@ public class LoginController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-
-
             MenuController menuController = loader.getController();
             menuController.setUserId(userId);
             stage.showAndWait();
-
-
             //ToDoListController toDoListController = loader.getController();
             //System.out.println(userId);
             //toDoListController.setUserId(userId);
             //stage.showAndWait(); //nie ruszaj kurwa kolejności
 
         }
-
-
-
-
-
-
 }

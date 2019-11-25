@@ -23,6 +23,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
+            <Label fx:id="wrongUsernameLabel" layoutX="25.0" layoutY="82.0" prefHeight="18.0" prefWidth="356.0" text="This username is already in use. Please try another" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="538.0" layoutY="27.0" text="FOCUS" textFill="WHITE">
