@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #E74C3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SignUpController">
+<AnchorPane fx:id="signUpAnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #E74C3C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SignUpController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #2E4053;">
          <children>
-            <TextField fx:id="signUpUsername" layoutX="70.0" layoutY="291.0" prefHeight="40.0" prefWidth="260.0" promptText="Username" AnchorPane.bottomAnchor="169.0" />
-            <TextField fx:id="signUpLastName" layoutX="70.0" layoutY="171.0" prefHeight="40.0" prefWidth="260.0" promptText="Last name" />
-            <TextField fx:id="signUpFirstName" layoutX="70.0" layoutY="115.0" prefHeight="40.0" prefWidth="260.0" promptText="First name" />
+            <TextField fx:id="signUpUsername" layoutX="70.0" layoutY="291.0" prefHeight="40.0" prefWidth="260.0" promptText="Username" style="-fx-background-radius: 20; -fx-blend-mode: 10;" AnchorPane.bottomAnchor="169.0" />
+            <TextField fx:id="signUpLastName" layoutX="70.0" layoutY="171.0" prefHeight="40.0" prefWidth="260.0" promptText="Last name" style="-fx-background-radius: 20;" />
+            <TextField fx:id="signUpFirstName" layoutX="70.0" layoutY="115.0" prefHeight="40.0" prefWidth="260.0" promptText="First name" style="-fx-background-radius: 20;" />
             <Button fx:id="signUpButton" layoutX="151.0" layoutY="365.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="98.0" style="-fx-background-color: #E74C3C;" text="SIGN UP" />
-            <PasswordField fx:id="signUpPassword" layoutX="70.0" layoutY="230.0" prefHeight="40.0" prefWidth="260.0" promptText="Password" />
+            <PasswordField fx:id="signUpPassword" layoutX="70.0" layoutY="230.0" prefHeight="40.0" prefWidth="260.0" promptText="Password" style="-fx-background-radius: 20;" />
             <Button fx:id="signUpBackButton" layoutX="330.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #E74C3C;" text="SIGN IN">
                <font>
                   <Font size="10.0" />

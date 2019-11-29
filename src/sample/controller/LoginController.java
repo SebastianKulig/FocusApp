@@ -1,5 +1,6 @@
 package sample.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Database.DatabaseHandler;
 import sample.model.User;
@@ -37,6 +39,9 @@ public class LoginController {
     @FXML
     private Button loginSignUpButton;
 
+    @FXML
+    private AnchorPane loginAnchorPane;
+
     private DatabaseHandler db;
 
     private int userId;
@@ -44,8 +49,6 @@ public class LoginController {
     void initialize() {
         DatabaseHandler db = new DatabaseHandler();
         loginSignInButton.setOnAction(event -> {
-           // if(!loginText.equals("") || !loginPassword.equals("")) {
-                // !loginText.equals("") || !loginPassword.equals("")
                 String loginText = loginUsernameField.getText().trim();
                 String loginPassword = loginPasswordField.getText().trim();
                 User user1 = new User();
@@ -57,9 +60,7 @@ public class LoginController {
                     while (userFromDB.next()) {
                         tmp++;
                         String user_name = userFromDB.getString("first_name");
-                        //System.out.println(user_name);
                         userId = userFromDB.getInt("id_user");
-                        //System.out.println(userId);
                         goToMenu();
                     }
                     if (tmp == 1) {
@@ -71,8 +72,16 @@ public class LoginController {
         });
 
 
-        loginSignUpButton.setOnAction(event -> {                   //lambda
-            loginSignUpButton.getScene().getWindow().hide();
+        loginSignUpButton.setOnAction(event -> {//lambda
+            AnchorPane signUpAnchorPane = null;
+            try {
+                signUpAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/signUp.fxml"));
+                loginAnchorPane.getChildren().setAll(signUpAnchorPane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            /*loginSignUpButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/signUp.fxml"));
             try {
@@ -85,6 +94,8 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.showAndWait();
+            */
+
         });
     }
 
@@ -93,7 +104,6 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/menu.fxml"));
             try {
-
                 loader.load();
             }catch (IOException e){
                 e.printStackTrace();
@@ -103,6 +113,10 @@ public class LoginController {
             stage.setScene(new Scene(root));
             MenuController menuController = loader.getController();
             menuController.setUserId(userId);
+            stage.setOnCloseRequest(e -> {       // wychodzenie, bez tego trzeba podwójnie zamykać
+                Platform.exit();
+            System.exit(0);
+            });
             stage.showAndWait();
             //ToDoListController toDoListController = loader.getController();
             //System.out.println(userId);

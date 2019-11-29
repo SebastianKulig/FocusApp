@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Database.DatabaseHandler;
 import sample.model.User;
@@ -46,6 +47,9 @@ public class SignUpController {
     private Button signUpBackButton;
 
     @FXML
+    private AnchorPane signUpAnchorPane;
+
+    @FXML
     private Label wrongUsernameLabel;
 
 
@@ -56,6 +60,17 @@ public class SignUpController {
             signUpUser();
         });
         signUpBackButton.setOnAction(event -> {
+            AnchorPane loginAnchorPane = null;
+            try {
+                loginAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/login.fxml"));
+                signUpAnchorPane.getChildren().setAll(loginAnchorPane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            /*
+            signUpBackButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/login.fxml"));
             try {
@@ -67,8 +82,14 @@ public class SignUpController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.showAndWait();
+
+             */
+
+
         });
+
     }
+
         private void signUpUser () {
             DatabaseHandler dbhandler = new DatabaseHandler();
             User user1 = new User(signUpFirstName.getText(), signUpLastName.getText(), signUpUsername.getText(), signUpPassword.getText());
@@ -79,6 +100,7 @@ public class SignUpController {
             signUpUsername.setText("");
 
             };
+
    /* private void goBackToLogin() {
         signUpBackButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();

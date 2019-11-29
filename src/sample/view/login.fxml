@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
+<AnchorPane fx:id="loginAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #E74C3C;">
          <children>
@@ -26,10 +26,10 @@
             <Label layoutX="94.0" layoutY="117.0" prefHeight="88.0" prefWidth="244.0" text="Witaj w aplikacji, która uczyni Cię nieco bardziej produktywnym............................... albo przynajmniej spróbuje" textAlignment="CENTER" textFill="#f0efef" wrapText="true" />
          </children>
       </AnchorPane>
-      <TextField fx:id="loginUsernameField" layoutX="486.0" layoutY="138.0" prefHeight="40.0" prefWidth="250.0" />
-      <PasswordField fx:id="loginPasswordField" layoutX="486.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="loginUsernameField" layoutX="486.0" layoutY="138.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-radius: 20;" />
+      <PasswordField fx:id="loginPasswordField" layoutX="486.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-radius: 20;" />
       <Button fx:id="loginSignInButton" layoutX="562.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="98.0" style="-fx-background-color: #E74C3C;" text="SIGN IN" />
-      <Button fx:id="loginSignUpButton" layoutX="727.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #E74C3C;" text="SIGN UP">
+      <Button fx:id="loginSignUpButton" layoutX="708.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #E74C3C;" text="SIGN UP">
          <font>
             <Font size="10.0" />
          </font>

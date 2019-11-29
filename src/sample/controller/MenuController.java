@@ -3,29 +3,38 @@ package sample.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
 public class MenuController {
 
 
-    @FXML
-    private ImageView menuToDoButton;
 
-
-    @FXML
-    private ImageView menuPomodoroButton;
-
-    @FXML
-    private Button menuStatisticsButton;
-
-    @FXML
-    private ImageView menuHomeButton;
     @FXML
     private AnchorPane menuAnchorPane;
+
+
+
+    @FXML
+    private Button menuHomeButton;
+
+    @FXML
+    private Button menuToDoButton;
+
+    @FXML
+    private Button menuPomodoroButton;
+
+    @FXML
+    private Button menuInfoButton;
+
+
+
 
 
     public static int userId;
@@ -46,7 +55,6 @@ public class MenuController {
             goToMenu();
         });
 
-
         menuToDoButton.setOnMouseClicked(event -> {
             System.out.println("klik");
             goToToDoList();
@@ -58,7 +66,6 @@ public class MenuController {
         //addButton.setOpacity(0);
         try {
             MenuController.userId = getUserId();
-            System.out.println("from menu controller" + userId);
             ToDoListController.userId = getUserId();
             AnchorPane toDoListpane = new FXMLLoader().load(getClass().getResource("/sample/view/toDoList.fxml"));
             menuAnchorPane.getChildren().setAll(toDoListpane);
@@ -99,9 +106,8 @@ public class MenuController {
         try {
             ToDoListController.userId = getUserId();
             MenuController.userId = getUserId();
-            System.out.println("from toDoList" + userId);
-            AnchorPane toDoListpane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
-            menuAnchorPane.getChildren().setAll(toDoListpane);
+            AnchorPane menuAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
+            menuAnchorPane.getChildren().setAll(menuAnchorPane);
             //FadeTransition rootTransition = new FadeTransition(Duration.millis(4000), toDoListpane);
             // rootTransition.setFromValue(0f);
             // rootTransition.setToValue(1f);

@@ -37,16 +37,17 @@ public class ToDoListController {
     private ListView<Task> toDoListListView;
 
     @FXML
-    private ImageView menuPomodoroButton;
+    private Button menuToDoButton;
 
     @FXML
-    private Button menuStatisticsButton;
+    private Button menuPomodoroButton;
 
     @FXML
-    private ImageView menuHomeButton;
+    private Button menuInfoButton;
 
     @FXML
-    private ImageView menuToDoButton;
+    private Button menuHomeButton;
+
     private DatabaseHandler databaseHandler;
 
     public static ObservableList<Task> tasks;
