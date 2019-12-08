@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="menuAnchorPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MenuController">
+<AnchorPane fx:id="menuAnchorPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #D75151;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MenuController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #2E4053;">
          <children>
@@ -54,5 +54,10 @@
          </children>
       </AnchorPane>
       <Label layoutX="246.0" layoutY="108.0" prefHeight="362.0" prefWidth="446.0" text="Tu będzie instrukcja obsługi i info o aplikacji lub coś innego" />
+      <ImageView fitHeight="454.0" fitWidth="790.0" layoutX="110.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/pomodoro.jfif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

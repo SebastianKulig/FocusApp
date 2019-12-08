@@ -5,11 +5,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXListCell;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import sample.Database.DatabaseHandler;
 import sample.model.Task;
 
@@ -27,9 +31,9 @@ public class RowCellController extends JFXListCell<Task> {
 
     @FXML
     private Label rowCellDescriptionLabel;
-
     @FXML
-    private ImageView rowCellDoneButton;
+    private CheckBox checkBox;
+
     private FXMLLoader fxmlLoader;
 
     private DatabaseHandler databaseHandler;
@@ -58,13 +62,31 @@ public class RowCellController extends JFXListCell<Task> {
             rowCellTaskLabel.setText(task.getTask_name());
             rowCellDescriptionLabel.setText(task.getDescription());
             int taskId = task.getTaskId();
-            rowCellDoneButton.setOnMouseClicked(event -> {
+
+            checkBox.setOnAction(event -> {
+                removingTaskRow(taskId);
+
+            });
+           /* rowCellDoneButton.setOnMouseClicked(event -> {
                 databaseHandler = new DatabaseHandler();                             //delete from database
                 databaseHandler.deleteTask(ToDoListController.userId, taskId);
                 getListView().getItems().remove(getItem()); //remove clicked item (only from view)
             });
+
+            */
+
             setText(null);
             setGraphic(rowCellAnchorPane); //umieszczamy wszystko w naszym anchor pane
+        }
+    }
+    public void removingTaskRow(int taskId){
+
+        if(checkBox.isSelected()){
+
+            databaseHandler = new DatabaseHandler();                             //delete from database
+            databaseHandler.deleteTask(ToDoListController.userId, taskId);
+            getListView().getItems().remove(getItem());
+
         }
     }
 }

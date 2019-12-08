@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,12 +20,6 @@
          </font>
       </Label>
       <Label fx:id="rowCellDescriptionLabel" layoutX="119.0" layoutY="41.0" prefHeight="54.0" prefWidth="634.0" style="-fx-background-color: #E74C3C;" text="Description" textFill="#fafafa" />
-      <ImageView fx:id="rowCellDoneButton" fitHeight="34.0" fitWidth="41.0" layoutX="719.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <image>
-            <Image url="@../assets/icons8-ok-48.png" />
-         </image></ImageView>
+      <CheckBox fx:id="checkBox" layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="18.0" AnchorPane.bottomAnchor="63.8" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="9.0" />
    </children>
 </AnchorPane>

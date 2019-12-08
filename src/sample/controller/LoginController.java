@@ -117,6 +117,7 @@ public class LoginController {
                 Platform.exit();
             System.exit(0);
             });
+            stage.setTitle("FOCUS");
             stage.showAndWait();
             //ToDoListController toDoListController = loader.getController();
             //System.out.println(userId);

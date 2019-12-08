@@ -1,11 +1,8 @@
 package sample.controller;
-
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,15 +10,8 @@ import javafx.scene.control.TextField;
 import sample.Database.DatabaseHandler;
 import sample.model.Task;
 
-import javax.xml.crypto.Data;
 
 public class AddFormController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TextField addFormTaskfield;
@@ -31,8 +21,6 @@ public class AddFormController {
 
     @FXML
     private Button addFormAddButton;
-
-
 
     @FXML
     private Label addFormSuccesfullyLabel;
@@ -44,6 +32,7 @@ public class AddFormController {
     @FXML
     void initialize() {
         DatabaseHandler dbhandler =new DatabaseHandler();
+
         addFormAddButton.setOnAction(event -> {
             Task task = new Task();
             String task_name =addFormTaskfield.getText().trim();
@@ -58,12 +47,7 @@ public class AddFormController {
             }else{
                 System.out.println("nothing added");
             }
-
-
             dbhandler.addTask(task);
-
-
-
             ResultSet resultSet = dbhandler.getUserTasks(ToDoListController.userId);
             ToDoListController.tasks.clear();
                 try {
@@ -74,15 +58,10 @@ public class AddFormController {
                         myTask.setDescription(resultSet.getString("description"));
                         ToDoListController.tasks.add(myTask);
                     }
-
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
-
         });
-
-
     }
     public int getUserId() {
 
