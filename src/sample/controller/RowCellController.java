@@ -1,19 +1,15 @@
 package sample.controller;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 import com.jfoenix.controls.JFXListCell;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import sample.Database.DatabaseHandler;
 import sample.model.Task;
 
@@ -67,16 +63,9 @@ public class RowCellController extends JFXListCell<Task> {
                 removingTaskRow(taskId);
 
             });
-           /* rowCellDoneButton.setOnMouseClicked(event -> {
-                databaseHandler = new DatabaseHandler();                             //delete from database
-                databaseHandler.deleteTask(ToDoListController.userId, taskId);
-                getListView().getItems().remove(getItem()); //remove clicked item (only from view)
-            });
-
-            */
 
             setText(null);
-            setGraphic(rowCellAnchorPane); //umieszczamy wszystko w naszym anchor pane
+            setGraphic(rowCellAnchorPane); //umieszczamy wszystko w naszym anchorpane
         }
     }
     public void removingTaskRow(int taskId){
