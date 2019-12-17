@@ -4,7 +4,7 @@ import sample.model.User;
 import sample.model.Task;
 import java.sql.*;
 
-public class DatabaseHandler extends Conf {
+public class DatabaseHandler {
     Connection dbConnection;
     public  Connection getDbConnection() throws ClassNotFoundException, SQLException {
 
