@@ -49,9 +49,9 @@ public class ToDoListController extends GoTo {
 
     @FXML
     void initialize() throws SQLException {
-        tasks = FXCollections.observableArrayList();
+        tasks = FXCollections.observableArrayList(); //do wyświetlania zadań
         databaseHandler = new DatabaseHandler();
-        ResultSet resultSet = databaseHandler.getUserTasks(ToDoListController.userId);
+        ResultSet resultSet = databaseHandler.getUserTasks(ToDoListController.userId); //zadania danego użytkownika
         while(resultSet.next()){
             Task task = new Task();
             task.setTaskId(resultSet.getInt("id_task"));
@@ -102,8 +102,6 @@ public class ToDoListController extends GoTo {
 
     public void goToMenu(){
         try {
-
-
             MenuController.userId = getUserId();
             AnchorPane MenuPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
             toDoListAnchorPane.getChildren().setAll(MenuPane);

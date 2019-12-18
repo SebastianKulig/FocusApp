@@ -31,6 +31,7 @@ public class AddFormController {
         DatabaseHandler dbhandler =new DatabaseHandler();
 
         addFormAddButton.setOnAction(event -> {
+            //tworzenie nowego zadania
             Task task = new Task();
             String task_name =addFormTaskfield.getText().trim();
             String task_descryption = addFormDescrytpionField.getText().trim();
@@ -44,7 +45,8 @@ public class AddFormController {
             }else{
                 System.out.println("nothing added");
             }
-            dbhandler.addTask(task);
+            dbhandler.addTask(task); //dodanie zadania do bazy danych
+            //odświeżenie wyświetlanej listy zadań
             ResultSet resultSet = dbhandler.getUserTasks(ToDoListController.userId);
             ToDoListController.tasks.clear();
                 try {

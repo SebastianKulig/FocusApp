@@ -40,8 +40,6 @@ public class MenuController extends GoTo {
     @FXML
     void initialize() {
 
-
-
         menuToDoButton.setOnMouseClicked(event -> {
             goToToDoList();
         });
@@ -66,7 +64,7 @@ public class MenuController extends GoTo {
         }
     }
 
-    public void goToMenu(){ }
+    public void goToMenu(){ } // z klasy abstrakcyjnej trzeba wszystkie metody zaimplementować
 
     public void goToInfo(){
         try {

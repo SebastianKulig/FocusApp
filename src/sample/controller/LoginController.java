@@ -46,10 +46,9 @@ public class LoginController {
                 User user1 = new User();
                 user1.setUserName(loginText);
                 user1.setPassword(loginPassword);
-                ResultSet userFromDB = db.returnUserFromDB(user1);
-
+                ResultSet userFromDB = db.returnUserFromDB(user1); //sprawdzamy czy baza danych zwroci nam jakiegoś użytkownika dla tego loginu i hasła
                 try {
-                    while (userFromDB.next()) {
+                    while (userFromDB.next()) { // jeśli zostanie zwrócony z bazy danych 1 użytkownik to zezwalamay na dostęp
                         String user_name = userFromDB.getString("first_name");
                         userId = userFromDB.getInt("id_user");
                         goToMenu();
@@ -60,7 +59,7 @@ public class LoginController {
         });
 
 
-        loginSignUpButton.setOnAction(event -> {//lambda
+        loginSignUpButton.setOnAction(event -> {
             AnchorPane signUpAnchorPane = null;
             try {
                 signUpAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/signUp.fxml"));

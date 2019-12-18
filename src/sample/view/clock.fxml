@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="clockAnchorPane" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ClockController">
+<AnchorPane fx:id="clockAnchorPane" minHeight="600.0" minWidth="483.0" prefHeight="600.0" prefWidth="483.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ClockController">
    <children>
-      <ImageView fx:id="clockPlayButton" fitHeight="217.0" fitWidth="329.0" layoutX="81.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clockPlayButton" fitHeight="118.0" fitWidth="118.0" layoutX="14.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/play-button.png" />
          </image>
@@ -19,30 +19,23 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <ImageView fx:id="clockStopButton" fitHeight="217.0" fitWidth="217.0" layoutX="609.0" layoutY="291.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clockStopButton" fitHeight="125.0" fitWidth="118.0" layoutX="184.0" layoutY="400.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/stop.png" />
          </image>
       </ImageView>
-      <TextField fx:id="clockDisplay" alignment="CENTER" editable="false" layoutX="260.0" layoutY="146.0" prefHeight="65.0" prefWidth="130.0">
+      <TextField fx:id="clockDisplay" alignment="CENTER" editable="false" layoutX="96.0" layoutY="215.0" prefHeight="146.0" prefWidth="295.0">
+         <font>
+            <Font name="System Bold" size="68.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="622.0" layoutY="126.0" prefHeight="106.0" prefWidth="222.0" />
+      <TextField fx:id="clockTitle" alignment="CENTER" editable="false" layoutX="117.0" layoutY="14.0" prefHeight="65.0" prefWidth="251.0" text="Skup się!">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </TextField>
-      <AnchorPane layoutX="622.0" layoutY="126.0" prefHeight="106.0" prefWidth="222.0">
-         <children>
-            <Button fx:id="setMinutyButton" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="Ustaw" />
-            <Button fx:id="setPrzerwaButton" layoutX="14.0" layoutY="71.0" mnemonicParsing="false" text="Ustaw" />
-            <TextField fx:id="setMinutyTx" layoutX="73.0" layoutY="21.0" promptText="Czas skupienia (min)" />
-            <TextField fx:id="setPrzerwaTx" layoutX="73.0" layoutY="71.0" promptText="Czas przerwy (min)" />
-         </children>
-      </AnchorPane>
-      <TextField fx:id="clockTitle" alignment="CENTER" editable="false" layoutX="199.0" layoutY="60.0" prefHeight="65.0" prefWidth="251.0" text="Skup się!">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </TextField>
-      <ImageView fx:id="clockPlayButton1" fitHeight="217.0" fitWidth="329.0" layoutX="342.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clockPlayButton1" fitHeight="118.0" fitWidth="118.0" layoutX="356.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/play-button.png" />
          </image>
@@ -50,20 +43,29 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Label fx:id="skupienieTx" alignment="CENTER" layoutX="160.0" layoutY="518.0" text="Skupienie" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="skupienieTx" alignment="CENTER" layoutX="43.0" layoutY="538.0" text="Skupienie" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="HP Simplified Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="przerwaTx" alignment="CENTER" layoutX="426.0" layoutY="518.0" text="Przerwa" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="przerwaTx" alignment="CENTER" layoutX="390.0" layoutY="538.0" text="Przerwa" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="HP Simplified Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="goToMenuButton" layoutX="664.0" layoutY="41.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="149.0" style="-fx-background-color: #E74C3C;" text="Menu" textFill="#2e4053">
+      <Button fx:id="goToMenuButton" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="98.0" style="-fx-background-color: #E74C3C;" text="Menu" textFill="#2e4053">
          <font>
-            <Font name="HP Simplified Bold" size="36.0" />
+            <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="skupienieTx1" alignment="CENTER" layoutX="227.0" layoutY="538.0" text="Stop" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="HP Simplified Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="setPrzerwaTx" layoutX="83.0" layoutY="164.0" prefHeight="31.0" prefWidth="149.0" promptText="Czas przerwy (min)" />
+      <Button fx:id="setPrzerwaButton" layoutX="13.0" layoutY="164.0" mnemonicParsing="false" text="Ustaw" />
+      <Button fx:id="setMinutyButton" layoutX="13.0" layoutY="117.0" mnemonicParsing="false" text="Ustaw" />
+      <TextField fx:id="setMinutyTx" layoutX="83.0" layoutY="117.0" prefHeight="31.0" prefWidth="149.0" promptText="Czas skupienia (min)" />
    </children>
 </AnchorPane>

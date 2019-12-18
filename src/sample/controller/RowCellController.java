@@ -68,10 +68,9 @@ public class RowCellController extends JFXListCell<Task> {
             setGraphic(rowCellAnchorPane); //umieszczamy wszystko w naszym anchorpane
         }
     }
-    public void removingTaskRow(int taskId){
+    public void removingTaskRow(int taskId){ //usuwanie zadań z listy po zaznaczeni checkbox
 
         if(checkBox.isSelected()){
-
             databaseHandler = new DatabaseHandler();                             //delete from database
             databaseHandler.deleteTask(ToDoListController.userId, taskId);
             getListView().getItems().remove(getItem());

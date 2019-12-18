@@ -6,6 +6,7 @@ import java.sql.*;
 
 public class DatabaseHandler {
     Connection dbConnection;
+    //połączenie z bazą
     public  Connection getDbConnection() throws ClassNotFoundException, SQLException {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,7 +33,7 @@ public class DatabaseHandler {
     // adding new user to our database
     public boolean createUser (User user1){
         boolean ifcreated = false;
-        if(checkUserNameAvailability(user1)) {
+        if(checkUserNameAvailability(user1)) { //sprawdzamy dostępność loginu, jeśli dostępny to tworzymy użytkownika
             String creator = "INSERT INTO " + "users" + "(" + "first_name" + "," + "last_name" + "," + "username" + "," + "password" + ")" + "VALUES(?,?,?,?)";
             try {
                 PreparedStatement prep = getDbConnection().prepareStatement(creator);
@@ -79,7 +80,7 @@ public class DatabaseHandler {
         return result;
     }
 
-    public void addTask(Task task){
+    public void addTask(Task task){ //dodawanie zadań do bazy
         String creator = "INSERT INTO" +  " tasks " + " (" + " id_user "+  "," + " task " +"," + " description " + ")" + "VALUES(?,?,?)";
         try {
             PreparedStatement prep = getDbConnection().prepareStatement(creator);
@@ -96,7 +97,7 @@ public class DatabaseHandler {
         }
     }
 
-    public ResultSet getUserTasks(int userId){
+    public ResultSet getUserTasks(int userId){ //na podstawie userID zwracamy wszystkie jego zadania w postaci resultSet
         ResultSet resultTask = null;
         String query = "SELECT * FROM " + "tasks" + " WHERE " + "id_user " + "=?";
         try {
@@ -113,7 +114,7 @@ public class DatabaseHandler {
         return resultTask;
     }
 
-    private boolean checkUserNameAvailability(User user1){
+    private boolean checkUserNameAvailability(User user1){ //sprawdzanie dostępności danego username
         ResultSet result = null;
         String query = "SELECT * FROM " + "users" + " WHERE " + "username" + "=?";
         try {

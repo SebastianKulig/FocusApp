@@ -46,7 +46,7 @@ public class SignUpController {
             signUpUser();
         });
 
-        signUpBackButton.setOnAction(event -> {
+        signUpBackButton.setOnAction(event -> { //powrót do ekranu logowania
             AnchorPane loginAnchorPane = null;
             try {
                 loginAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/login.fxml"));
@@ -54,15 +54,13 @@ public class SignUpController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         });
 
     }
         private void signUpUser () {
             DatabaseHandler dbhandler = new DatabaseHandler();
             User user1 = new User(signUpFirstName.getText(), signUpLastName.getText(), signUpUsername.getText(), signUpPassword.getText());
-            wrongUsernameLabel.setVisible(!dbhandler.createUser(user1)); //piekne :D konstruktorem se wpisuje wszystkie dane
+            wrongUsernameLabel.setVisible(!dbhandler.createUser(user1)); //createUser zwróci false jeśli nie udało się utworzyć użytkownika
             signUpFirstName.setText("");
             signUpLastName.setText("");
             signUpPassword.setText("");
