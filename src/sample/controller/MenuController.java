@@ -1,14 +1,27 @@
 package sample.controller;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 
-public class MenuController extends GoTo {
+public class MenuController {
+
+    @FXML
+    private AnchorPane rootAnchorPane;
 
     @FXML
     private AnchorPane menuAnchorPane;
@@ -25,6 +38,18 @@ public class MenuController extends GoTo {
     @FXML
     private Button menuInfoButton;
 
+    @FXML
+    private JFXButton closeButton;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    @FXML
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
 
     public static int userId;
 
@@ -39,6 +64,11 @@ public class MenuController extends GoTo {
 
     @FXML
     void initialize() {
+        rootAnchorPane.setBackground(Background.EMPTY);
+
+        menuHomeButton.setOnMouseClicked(event -> {
+            goToMenu();
+        });
 
         menuToDoButton.setOnMouseClicked(event -> {
             goToToDoList();
@@ -53,6 +83,39 @@ public class MenuController extends GoTo {
         });
     }
 
+    public void goToPomodoroClock() {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/clock.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+        stage.showAndWait();
+
+
+    }
+
     public void goToToDoList() {
         try {
             MenuController.userId = getUserId();
@@ -64,9 +127,19 @@ public class MenuController extends GoTo {
         }
     }
 
-    public void goToMenu(){ } // z klasy abstrakcyjnej trzeba wszystkie metody zaimplementować
+    public void goToMenu(){
+        try{
+            AnchorPane menuAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
+            rootAnchorPane.getChildren().setAll(menuAnchorPane); //musiałem brać z root bo inaczej była pętla sam się do siebie musiałbym odwoływać
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void goToInfo(){
+
         try {
             MenuController.userId = getUserId();
             InfoController.userId = getUserId();
@@ -76,6 +149,9 @@ public class MenuController extends GoTo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
+
 }
 

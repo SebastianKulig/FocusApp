@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="menuAnchorPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #D75151;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MenuController">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #0000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MenuController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #2E4053;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #2E4053;">
          <children>
-            <Button fx:id="menuToDoButton" layoutY="110.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" text=" ">
+            <Button fx:id="menuToDoButton" layoutY="110.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2E4053;" text=" " AnchorPane.topAnchor="100.0">
                <graphic>
                   <ImageView fitHeight="69.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icons8-list-64.png" />
+                        <Image url="@../assets/icons8-list-100.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuPomodoroButton" layoutY="220.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0">
+            <Button fx:id="menuPomodoroButton" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2E4053;" AnchorPane.topAnchor="200.0">
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="81.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icons8-timer-50.png" />
+                        <Image url="@../assets/icons8-clock-100.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -32,16 +33,16 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuInfoButton" layoutY="330.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0">
+            <Button fx:id="menuInfoButton" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2E4053;" AnchorPane.topAnchor="300.0">
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="87.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icons8-info-100.png" />
+                        <Image url="@../assets/icons8-information-100.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuHomeButton" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #E74C3C #E74C3C;">
+            <Button fx:id="menuHomeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #E74C3C #E74C3C;" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="87.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,11 +54,26 @@
 
          </children>
       </AnchorPane>
-      <Label layoutX="246.0" layoutY="108.0" prefHeight="362.0" prefWidth="446.0" text="Tu będzie instrukcja obsługi i info o aplikacji lub coś innego" />
-      <ImageView fitHeight="454.0" fitWidth="790.0" layoutX="110.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/pomodoro.jfif" />
-         </image>
-      </ImageView>
+      <AnchorPane fx:id="menuAnchorPane" layoutX="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #E74C3C;">
+         <children>
+            <ImageView fitHeight="473.0" fitWidth="890.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <image>
+                  <Image url="@../assets/pomodoro.jfif" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="closeButton" cancelButton="true" ellipsisString="" layoutX="622.0" layoutY="7.0" onAction="#closeButtonAction" prefHeight="49.0" prefWidth="51.0" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8-delete-100 (3).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

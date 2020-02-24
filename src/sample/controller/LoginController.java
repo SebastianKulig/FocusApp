@@ -1,15 +1,23 @@
 package sample.controller;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import sample.Database.DatabaseHandler;
+import javafx.stage.StageStyle;
+import sample.database.DatabaseHandler;
 import sample.model.User;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -17,13 +25,14 @@ import java.sql.SQLException;
 
 
 public class LoginController {
-
+    @FXML
+    private JFXButton closeButton;
 
     @FXML
-    private TextField loginUsernameField;
+    private JFXTextField loginUsernameField;
 
     @FXML
-    private PasswordField loginPasswordField;
+    private JFXPasswordField loginPasswordField;
 
     @FXML
     private Button loginSignInButton;
@@ -33,12 +42,24 @@ public class LoginController {
 
     @FXML
     private AnchorPane loginAnchorPane;
+    @FXML
+    private Label loginErrorLabel;
+
+    @FXML
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
     private DatabaseHandler db;
 
     private int userId;
+    private double xOffset = 0;
+    private double yOffset = 0;
     @FXML
     void initialize() {
+        loginSignInButton.setDefaultButton(true);
+
         DatabaseHandler db = new DatabaseHandler();
         loginSignInButton.setOnAction(event -> {
                 String loginText = loginUsernameField.getText().trim();
@@ -53,8 +74,12 @@ public class LoginController {
                         userId = userFromDB.getInt("id_user");
                         goToMenu();
                     }
+                    loginErrorLabel.setVisible(true);
+                    loginUsernameField.clear();
+                    loginPasswordField.clear();
                 }catch (SQLException e){
                    e.printStackTrace();
+
                 }
         });
 
@@ -81,17 +106,39 @@ public class LoginController {
                 e.printStackTrace();
             }
             Parent root = loader.getRoot();
+
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            //stage.setScene(scene);
+            scene.setFill(Color.TRANSPARENT);
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.TRANSPARENT);
+
             MenuController menuController = loader.getController();
             menuController.setUserId(userId);
-            stage.setOnCloseRequest(e -> {       // wychodzenie, bez tego trzeba podwójnie zamykać
-                Platform.exit();
-            System.exit(0);
-            });
-            stage.setTitle("FOCUS");
-            stage.showAndWait();
 
+
+
+            stage.initStyle(StageStyle.UNDECORATED);
+
+
+            root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+            });
+            root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    stage.setX(event.getScreenX() - xOffset);
+                    stage.setY(event.getScreenY() - yOffset);
+                }
+            });
+
+
+            stage.show();
 
         }
 }

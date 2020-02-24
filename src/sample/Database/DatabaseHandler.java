@@ -1,4 +1,4 @@
-package sample.Database;
+package sample.database;
 
 import sample.model.User;
 import sample.model.Task;

@@ -1,15 +1,20 @@
 package sample.controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import sample.Database.DatabaseHandler;
+import javafx.stage.Stage;
+import sample.database.DatabaseHandler;
 import sample.model.Task;
 
 public class AddFormController {
 
+    @FXML
+    private JFXButton closeButton;
     @FXML
     private TextField addFormTaskfield;
 
@@ -21,6 +26,11 @@ public class AddFormController {
 
     @FXML
     private Label addFormSuccesfullyLabel;
+    @FXML
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
     private DatabaseHandler dbhandler;
 

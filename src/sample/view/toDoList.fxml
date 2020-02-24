@@ -1,58 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="toDoListAnchorPane" accessibleRole="TAB_PANE" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ToDoListController">
+<AnchorPane fx:id="toDoListAnchorPane" accessibleRole="TAB_PANE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #E74C3C;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ToDoListController">
    <children>
-      <ListView fx:id="toDoListListView" layoutX="115.0" prefHeight="526.0" prefWidth="789.0" />
-      <AnchorPane prefHeight="600.0" prefWidth="113.0" style="-fx-background-color: #2E4053;">
-         <children>
-            <Button fx:id="menuToDoButton" layoutX="2.0" layoutY="110.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="69.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-list-64.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="menuPomodoroButton" layoutX="2.0" layoutY="220.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0">
-               <graphic>
-                  <ImageView accessibleRole="BUTTON" fitHeight="81.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-timer-50.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="menuInfoButton" layoutX="2.0" layoutY="330.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0">
-               <graphic>
-                  <ImageView accessibleRole="BUTTON" fitHeight="87.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-info-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="menuHomeButton" layoutX="2.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #E74C3C #E74C3C;">
-               <graphic>
-                  <ImageView accessibleRole="BUTTON" fitHeight="87.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-brain-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
-      <Button fx:id="addButton" layoutX="452.0" layoutY="534.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="98.0" text="ADD TASK" />
+      <ListView fx:id="toDoListListView" layoutY="50.0" prefHeight="471.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="addButton" layoutX="301.0" layoutY="534.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="ADD TASK" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
+      <JFXButton fx:id="closeButton" alignment="CENTER" cancelButton="true" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" onAction="#closeButtonAction" prefHeight="40.0" prefWidth="40.0" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-delete-100 (3).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

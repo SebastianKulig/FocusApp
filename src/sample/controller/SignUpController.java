@@ -1,5 +1,8 @@
 package sample.controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -7,7 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import sample.Database.DatabaseHandler;
+import javafx.stage.Stage;
+import sample.database.DatabaseHandler;
 import sample.model.User;
 import java.io.IOException;
 
@@ -16,19 +20,19 @@ public class SignUpController {
 
 
     @FXML
-    private TextField signUpUsername;
+    private JFXTextField signUpUsername;
 
     @FXML
-    private TextField signUpLastName;
+    private JFXTextField  signUpLastName;
 
     @FXML
-    private TextField signUpFirstName;
+    private JFXTextField  signUpFirstName;
 
     @FXML
     private Button signUpButton;
 
     @FXML
-    private PasswordField signUpPassword;
+    private JFXPasswordField signUpPassword;
 
     @FXML
     private Button signUpBackButton;
@@ -38,6 +42,15 @@ public class SignUpController {
 
     @FXML
     private Label wrongUsernameLabel;
+
+    @FXML
+    private JFXButton closeButton;
+
+    @FXML
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
 
     @FXML

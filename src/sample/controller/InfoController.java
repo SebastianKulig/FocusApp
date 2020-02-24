@@ -1,29 +1,22 @@
 package sample.controller;
 
 
-import java.io.IOException;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 
-public class InfoController extends GoTo{
+import javafx.stage.Stage;
 
+public class InfoController {
 
-    @FXML
-    private AnchorPane infoAnchorPane;
 
     @FXML
-    private Button menuToDoButton;
+    private JFXButton closeButton;
 
     @FXML
-    private Button menuPomodoroButton;
-
-    @FXML
-    private Button menuInfoButton;
-
-    @FXML
-    private Button menuHomeButton;
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
     public static int userId;
 
@@ -34,38 +27,9 @@ public class InfoController extends GoTo{
 
     @FXML
     void initialize() {
-        menuHomeButton.setOnMouseClicked(event -> {
-            goToMenu();
-        });
-        menuPomodoroButton.setOnMouseClicked(event -> {
-            goToPomodoroClock();
-        });
-        menuToDoButton.setOnMouseClicked(event -> {
-            goToToDoList();
-        });
 
     }
 
-    public void goToMenu(){
-        try {
 
-            MenuController.userId = getUserId();
-            AnchorPane menuAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
-            infoAnchorPane.getChildren().setAll(menuAnchorPane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void goToToDoList() {
-        try {
-
-            ToDoListController.userId = getUserId();
-            AnchorPane toDoListpane = new FXMLLoader().load(getClass().getResource("/sample/view/toDoList.fxml"));
-            infoAnchorPane.getChildren().setAll(toDoListpane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void goToInfo(){ }
 }
 

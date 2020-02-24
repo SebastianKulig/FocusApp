@@ -1,23 +1,27 @@
 package sample.controller;
 
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.Database.DatabaseHandler;
+import javafx.stage.StageStyle;
+import sample.database.DatabaseHandler;
 import sample.model.Task;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-public class ToDoListController extends GoTo {
+public class ToDoListController {
     public static  int userId;
 
     @FXML
@@ -30,20 +34,20 @@ public class ToDoListController extends GoTo {
     private ListView<Task> toDoListListView;
 
     @FXML
-    private Button menuToDoButton;
+    private JFXButton closeButton;
 
     @FXML
-    private Button menuPomodoroButton;
-
-    @FXML
-    private Button menuInfoButton;
-
-    @FXML
-    private Button menuHomeButton;
+    private void closeButtonAction(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
     private DatabaseHandler databaseHandler;
 
     public static ObservableList<Task> tasks;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
 
 
@@ -64,18 +68,6 @@ public class ToDoListController extends GoTo {
         toDoListListView.setCellFactory(RowCellController ->new RowCellController()); //do naszej customowej zamiast defaultowej
 
 
-        menuHomeButton.setOnMouseClicked(event -> {
-            goToMenu();
-        });
-
-        menuPomodoroButton.setOnMouseClicked(event -> {
-            goToPomodoroClock();
-        });
-
-        menuInfoButton.setOnMouseClicked(event -> {
-            goToInfo();
-        });
-
         addButton.setOnAction(event -> {
             addButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
@@ -88,39 +80,31 @@ public class ToDoListController extends GoTo {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+
             AddFormController addFormController = loader.getController();
             addFormController.setUserId(userId); //nie ruszać kolejności, najpierw trzeba ustawić id w addForm
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+            });
+            root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    stage.setX(event.getScreenX() - xOffset);
+                    stage.setY(event.getScreenY() - yOffset);
+                }
+            });
             stage.showAndWait();
 
         });
 
     }
 
-    public int getUserId(){
-        return this.userId;
-    }
-
-    public void goToMenu(){
-        try {
-            MenuController.userId = getUserId();
-            AnchorPane MenuPane = new FXMLLoader().load(getClass().getResource("/sample/view/menu.fxml"));
-            toDoListAnchorPane.getChildren().setAll(MenuPane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void goToToDoList(){}
-    public void goToInfo(){
-        try {
-
-            InfoController.userId = getUserId();
-            AnchorPane infoAnchorPane = new FXMLLoader().load(getClass().getResource("/sample/view/Info.fxml"));
-            toDoListAnchorPane.getChildren().setAll(infoAnchorPane);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 
 
