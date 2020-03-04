@@ -11,6 +11,7 @@ This project is simple to do list with pomodoro timer and database for your task
 <img src="images/Przechwytywanie.PNG" width=300 > 
 <img src="images/mainScreen.PNG" width=300 > 
 <img src="images/toDoList.PNG" width=300 > 
+<img src="addingTaskScreen.PNG" width=300 > 
 
 ## Technologies
 Project is created with:
