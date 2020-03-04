@@ -6,8 +6,8 @@
 ## General info
 This project is simple to do list with pomodoro timer and database for your tasks. You can create your own account to save your to do list.
 	
-![](/../<master>FocusApp/src/sample/assets/Przechwytywanie.jpg?raw=true) 
-![](FocusApp/src/sample/assets/SignUp_screen.jpg?raw=true ) 
+
+![](images/SignUp_screen.jpg?raw=true ) 
 ![](FocusApp/src/sample/assets/mainScreen.jpg?raw=true ) 
 ![](FocusApp/src/sample/assets/toDoList.jpg?raw=true ) 
 ## Technologies
